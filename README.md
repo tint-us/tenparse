@@ -121,23 +121,30 @@ server {
   }
 }
 ```
+
 Aktifkan dan reload Nginx:
+```
 sudo ln -s /etc/nginx/sites-available/tenparse.conf /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
-
+```
 ---
 
 ### 2. Apache mod_wsgi
 
 Install Apache + mod_wsgi (Linux):
+```
 sudo apt update
 sudo apt install apache2 libapache2-mod-wsgi-py3
+```
 
 Buat entry point WSGI wsgi.py di root project:
+```
 from app import app as application
+```
 
 Contoh VirtualHost di /etc/apache2/sites-available/tenparse.conf:
+```
 <VirtualHost *:80>
   ServerName tenparse.domain.id
   WSGIDaemonProcess tenparse python-home=/opt/tenparse/.venv python-path=/opt/tenparse
@@ -150,17 +157,20 @@ Contoh VirtualHost di /etc/apache2/sites-available/tenparse.conf:
   ErrorLog ${APACHE_LOG_DIR}/tenparse_error.log
   CustomLog ${APACHE_LOG_DIR}/tenparse_access.log combined
 </VirtualHost>
+```
 
 Aktifkan site dan reload Apache:
+```
 sudo a2enmod wsgi
 sudo a2ensite tenparse
 sudo systemctl reload apache2
-
+```
 ---
 
 ### 3. Docker
 
 Contoh Dockerfile:
+```
 FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
