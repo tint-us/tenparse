@@ -9,7 +9,6 @@ ALLOWED_EXTENSIONS = {'txt'}
 
 app = Flask(__name__)
 app.jinja_env.cache = {}
-app.secret_key = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 if not os.path.exists(UPLOAD_FOLDER):

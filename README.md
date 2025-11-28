@@ -210,6 +210,25 @@ ini-bukan-ip
 - Folder uploads/ dibuat otomatis saat berjalan
 - secret_key masih static, pertimbangkan pindah ke ENV jika ingin akses publik
 - Mode debug Flask tidak cocok untuk production
+- Setiap proses parsing akan overwrite file uploads/output.txt
+- Folder uploads/ dibuat otomatis saat berjalan
+- Baris `app.secret_key` telah dihapus dari `app.py` karena aplikasi saat ini tidak menggunakan
+  Flask `session`, `flash`, atau CSRF — sehingga `SECRET_KEY` tidak diperlukan untuk alur ini.
+  Jika nanti Anda menambahkan fitur yang memerlukan session atau perlindungan CSRF, tetapkan
+  `SECRET_KEY` melalui environment variable (jangan commit ke repo). Contoh singkat untuk
+  development/production:
+
+  ```bash
+  export SECRET_KEY="$(python3 -c 'import os,base64; print(base64.urlsafe_b64encode(os.urandom(32)).decode())')"
+  ```
+
+  Dan di kode Python gunakan:
+
+  ```python
+  import os
+  app.secret_key = os.environ.get('SECRET_KEY')
+  ```
+- Mode debug Flask tidak cocok untuk production
 
 ---
 
