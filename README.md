@@ -89,18 +89,22 @@ python app.py
 ```
 
 Akses aplikasi lewat browser:
-``` http://127.0.0.1:8087 ```
+```
+http://127.0.0.1:8087
+```
 ---
 
 ## 🐳 Deployment: Opsi Platform
 
 ### 1. Nginx Reverse Proxy
-
+```
 Install Nginx (Linux):
 sudo apt update
 sudo apt install nginx
+```
 
 Contoh konfigurasi di /etc/nginx/sites-available/tenparse.conf:
+```
 server {
   listen 80;
   server_name tenparse.domain.id;
@@ -116,7 +120,7 @@ server {
     proxy_set_header X-Forwarded-Proto $scheme;
   }
 }
-
+```
 Aktifkan dan reload Nginx:
 sudo ln -s /etc/nginx/sites-available/tenparse.conf /etc/nginx/sites-enabled/
 sudo nginx -t
