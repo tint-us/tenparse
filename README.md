@@ -179,12 +179,15 @@ COPY . .
 RUN mkdir -p uploads
 EXPOSE 8087
 CMD ["python", "app.py"]
-
+```
 Build dan jalankan container:
+```
 docker build -t tenparse:prod .
 docker run -d -p 8087:8087 --name tenparse tenparse:prod
+```
 
 Jika ingin persist output:
+```
 docker run -d \
   --name tenparse \
   -p 8087:8087 \
