@@ -65,24 +65,33 @@ netaddr>=1.3.0
 Gunakan command-command berikut di terminal atau command prompt:
 
 1. Clone repository
+```
 git clone <URL_REPO_GITHUB_KAMU>.git
 cd <nama-folder-repo>
+```
 
 2. Buat virtual environment (opsional tapi dianjurkan)
+```
 python3 -m venv .venv
 source .venv/bin/activate          # Linux/macOS
 # .venv\\Scripts\\activate         # Windows (PowerShell/CMD)
+```
 
 3. Install dependency
+```
 pip install --upgrade pip
 pip install -r requirements.txt
+```
 
 4. Jalankan server development
+```
 python app.py
+```
 
 Akses aplikasi lewat browser:
+```
 http://127.0.0.1:8087
-
+```
 ---
 
 ## 🐳 Deployment: Opsi Platform
@@ -212,8 +221,8 @@ ini-bukan-ip
 - Mode debug Flask tidak cocok untuk production
 - Setiap proses parsing akan overwrite file uploads/output.txt
 - Folder uploads/ dibuat otomatis saat berjalan
-- Baris `app.secret_key` telah dihapus dari `app.py` karena aplikasi saat ini tidak menggunakan
-  Flask `session`, `flash`, atau CSRF — sehingga `SECRET_KEY` tidak diperlukan untuk alur ini.
+- File `app.py` tidak mengandung `app.secret_key` karena aplikasi saat ini tidak menggunakan
+  Flask `session`, `flash`, atau CSRF, sehingga `SECRET_KEY` tidak diperlukan untuk alur ini.
   Jika nanti Anda menambahkan fitur yang memerlukan session atau perlindungan CSRF, tetapkan
   `SECRET_KEY` melalui environment variable (jangan commit ke repo). Contoh singkat untuk
   development/production:
