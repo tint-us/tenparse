@@ -103,7 +103,7 @@ sudo apt update
 sudo apt install nginx
 ```
 
-Contoh konfigurasi di /etc/nginx/sites-available/tenparse.conf:
+Contoh konfigurasi di `/etc/nginx/sites-available/tenparse.conf`:
 ```
 server {
   listen 80;
@@ -143,7 +143,7 @@ Buat entry point WSGI wsgi.py di root project:
 from app import app as application
 ```
 
-Contoh VirtualHost di /etc/apache2/sites-available/tenparse.conf:
+Contoh VirtualHost di `/etc/apache2/sites-available/tenparse.conf`:
 ```
 <VirtualHost *:80>
   ServerName tenparse.domain.id
@@ -190,7 +190,7 @@ docker run -d \
   -p 8087:8087 \
   -v /opt/tenparse-uploads:/app/uploads \
   tenparse:prod
-
+```
 ---
 
 ### 4. Proxmox (CT / VM)
@@ -211,17 +211,20 @@ Cara deploy:
 ## 🧾 Format Input yang Didukung
 
 ### Contoh input valid:
+```
 192.168.0.1
 10.0.0.5-10.0.0.10
 172.16.1.0/30
 10.1.1.1,10.2.2.2-10.2.2.5,192.168.3.7/29
+```
 
 ### Contoh input invalid (akan error dan menghentikan parsing):
+```
 10.0.0.999
 192.168.1.10-192.168.1.5 (jika range terbalik dan gagal di-parse)
 ini-bukan-ip
 256.256.256.256
-
+```
 ---
 
 ## ⚠️ Hal Penting
@@ -229,7 +232,6 @@ ini-bukan-ip
 - Output tidak mengecualikan network/broadcast (untuk raw parsing)
 - Setiap proses parsing akan overwrite file uploads/output.txt
 - Folder uploads/ dibuat otomatis saat berjalan
-- secret_key masih static, pertimbangkan pindah ke ENV jika ingin akses publik
 - Mode debug Flask tidak cocok untuk production
 - Setiap proses parsing akan overwrite file uploads/output.txt
 - Folder uploads/ dibuat otomatis saat berjalan
@@ -259,7 +261,7 @@ Jika terjadi error (misalnya format IP salah):
 Aplikasi akan menampilkan pesan error di halaman:
 
 Contoh:
+```
 Invalid input detected: 10.0.0.999. Error: address cannot be parsed, invalid IP format.
-
+```
 Pesan error selalu menampilkan IP yang gagal di-parse agar user bisa memperbaiki input.
-"""
