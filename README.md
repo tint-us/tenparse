@@ -66,8 +66,8 @@ Gunakan command-command berikut di terminal atau command prompt:
 
 1. Clone repository
 ```
-git clone <URL_REPO_GITHUB_KAMU>.git
-cd <nama-folder-repo>
+git clone https://github.com/tint-us/tenparse.git
+cd tenparse
 ```
 
 2. Buat virtual environment (opsional tapi dianjurkan)
